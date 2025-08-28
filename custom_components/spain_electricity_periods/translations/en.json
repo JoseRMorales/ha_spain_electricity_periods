@@ -1,0 +1,26 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Spanish Electricity Periods",
+                "description": "This integration provides Spanish electricity periods (Valle, Llano, Punta) based on time and date.",
+                "data": {}
+            }
+        },
+        "abort": {
+            "already_configured": "Spanish Electricity Periods is already configured."
+        }
+    },
+    "entity": {
+        "sensor": {
+            "spanish_electricity_periods": {
+                "name": "Spanish Electricity Periods",
+                "state": {
+                    "valle": "Valle",
+                    "llano": "Llano",
+                    "punta": "Punta"
+                }
+            }
+        }
+    }
+}
