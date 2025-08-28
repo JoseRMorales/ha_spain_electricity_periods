@@ -1,0 +1,21 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Periodos Electricidad España",
+                "description": "Esta integración proporciona los periodos de electricidad en España (Valle, Llano, Punta) basados en la hora y la fecha.",
+                "data": {}
+            }
+        },
+        "abort": {
+            "already_configured": "Periodos Electricidad España ya está configurada."
+        }
+    },
+    "entity": {
+        "sensor": {
+            "spain_electricity_period": {
+                "name": "Periodo de electricidad"
+            }
+        }
+    }
+}

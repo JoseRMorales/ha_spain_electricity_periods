@@ -1,0 +1,16 @@
+{
+    "domain": "spain_electricity_periods",
+    "name": "Spain Electricity Periods",
+    "codeowners": [
+        "@JoseRMorales"
+    ],
+    "config_flow": true,
+    "dependencies": [],
+    "documentation": "https://github.com/JoseRMorales/ha_spain_electricity_periods",
+    "integration_type": "service",
+    "iot_class": "calculated",
+    "issue_tracker": "https://github.com/JoseRMorales/ha_spain_electricity_periods/issues",
+    "requirements": [],
+    "single_config_entry": true,
+    "version": "0.0.1"
+}

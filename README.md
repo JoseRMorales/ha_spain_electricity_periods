@@ -1,46 +1,58 @@
-# Notice
+# Spain Electricity Periods Home Assistant Integration
 
-The component and platforms in this repository are not meant to be used by a
-user, but as a "blueprint" that custom component developers can build
-upon, to make more awesome stuff.
+Automatically track Spanish electricity tariff periods (Valle, Llano, Punta) in Home Assistant
 
-HAVE FUN! 😎
+## Features
+- **Real-time Period Detection:** Automatically determines the current electricity period (Valle, Llano, or Punta)
+- **Spanish Holiday Support:** Includes all Spanish national holidays when Valle period applies all day
+- **Weekend Handling:** Automatically applies Valle period during weekends
+- **Rich Attributes:** Provides additional information like current time, date, weekend status, and holiday status
+- **Time Zone Aware:** Uses Home Assistant's configured timezone for accurate period calculation
+- **Configurable via UI:** Set up and manage the integration through Home Assistant's UI
 
-## Why?
+## Electricity Periods
 
-This is simple, by having custom_components look (README + structure) the same
-it is easier for developers to help each other and for users to start using them.
+The integration follows the Spanish electricity market time periods:
 
-If you are a developer and you want to add things to this "blueprint" that you think more
-developers will have use for, please open a PR to add it :)
+### Weekdays
+- **Valle (Valley - Lowest rates):** 00:00 - 08:00 and 22:00 - 00:00
+- **Llano (Flat - Medium rates):** 08:00 - 10:00, 14:00 - 18:00
+- **Punta (Peak - Highest rates):** 10:00 - 14:00, 18:00 - 22:00
 
-## What?
+### Weekends & Holidays
+- **Valle (Valley):** All day (00:00 - 00:00)
 
-This repository contains multiple files, here is a overview:
+## Installation
 
-File | Purpose | Documentation
--- | -- | --
-`.devcontainer.json` | Used for development/testing with Visual Studio Code. | [Documentation](https://code.visualstudio.com/docs/remote/containers)
-`.github/ISSUE_TEMPLATE/*.yml` | Templates for the issue tracker | [Documentation](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository)
-`custom_components/integration_blueprint/*` | Integration files, this is where everything happens. | [Documentation](https://developers.home-assistant.io/docs/creating_component_index)
-`CONTRIBUTING.md` | Guidelines on how to contribute. | [Documentation](https://help.github.com/en/github/building-a-strong-community/setting-guidelines-for-repository-contributors)
-`LICENSE` | The license file for the project. | [Documentation](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository)
-`README.md` | The file you are reading now, should contain info about the integration, installation and configuration instructions. | [Documentation](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax)
-`requirements.txt` | Python packages used for development/lint/testing this integration. | [Documentation](https://pip.pypa.io/en/stable/user_guide/#requirements-files)
+### HACS (Recommended)
 
-## How?
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=JoseRMorales&category=Integration&repository=ha_spain_electricity_periods)
 
-1. Create a new repository in GitHub, using this repository as a template by clicking the "Use this template" button in the GitHub UI.
-1. Open your new repository in Visual Studio Code devcontainer (Preferably with the "`Dev Containers: Clone Repository in Named Container Volume...`" option).
-1. Rename all instances of the `integration_blueprint` to `custom_components/<your_integration_domain>` (e.g. `custom_components/awesome_integration`).
-1. Rename all instances of the `Integration Blueprint` to `<Your Integration Name>` (e.g. `Awesome Integration`).
-1. Run the `scripts/develop` to start HA and test out your new integration.
+Alternatively, you can install this integration manually by following the steps below.
+1. Go to HACS > Integrations > Custom Repositories.
+2. Add this repository: `https://github.com/JoseRMorales/ha_spain_electricity_periods` as an integration.
+3. Install **Spain Electricity Periods** from HACS.
+4. Restart Home Assistant.
 
-## Next steps
+### Manual
+1. Copy the `custom_components/spain_electricity_periods` folder to your Home Assistant `custom_components` directory.
+2. Restart Home Assistant.
 
-These are some next steps you may want to look into:
-- Add tests to your integration, [`pytest-homeassistant-custom-component`](https://github.com/MatthewFlamm/pytest-homeassistant-custom-component) can help you get started.
-- Add brand images (logo/icon) to https://github.com/home-assistant/brands.
-- Create your first release.
-- Share your integration on the [Home Assistant Forum](https://community.home-assistant.io/).
-- Submit your integration to [HACS](https://hacs.xyz/docs/publish/start).
+## Configuration
+1. In Home Assistant, go to **Settings > Devices & Services**.
+2. Click **Add Integration**.
+3. Search for **Spain Electricity Periods** and follow the prompts to set it up.
+
+## Entities
+- `sensor.spain_electricity_period`: Shows the current electricity period (`Valle`, `Llano`, or `Punta`)
+
+## State Attributes
+The sensor provides the following attributes:
+- `current_time`: Current time in HH:MM format
+- `current_date`: Current date in YYYY-MM-DD format
+- `is_weekend`: Boolean indicating if it's a weekend
+- `is_holiday`: Boolean indicating if it's a Spanish national holiday
+- `period_type`: Current period type (same as the sensor state)
+
+## License
+[MIT License](LICENSE)
